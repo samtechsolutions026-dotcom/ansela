@@ -224,6 +224,9 @@
     display:flex; align-items:flex-start; justify-content:flex-start; padding:14px;
     position:relative; overflow:hidden;
   }
+  .blog-card{cursor:pointer;}
+  .blog-thumb img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+  .blog-thumb{position:relative; background:var(--cream-2);}
   .blog-thumb .tag{
     background:rgba(255,255,255,.92); color:var(--ink); font-size:10.5px; font-weight:700;
     padding:5px 10px; border-radius:999px; letter-spacing:.02em;
@@ -231,6 +234,30 @@
   .blog-thumb .glyph{position:absolute; bottom:-10px; right:-10px; font-size:70px; opacity:.5;}
   .blog-card h4{font-family:'Fraunces',serif; font-size:15.5px; font-weight:500; line-height:1.35; margin-bottom:8px;}
   .blog-card .meta{font-size:12px; color:var(--muted);}
+
+  /* ---------- BLOG MODAL ---------- */
+  .blog-modal-overlay{
+    display:none; position:fixed; inset:0; z-index:100;
+    background:rgba(43,42,36,.55); backdrop-filter:blur(3px);
+    align-items:center; justify-content:center; padding:24px;
+  }
+  .blog-modal-overlay.open{display:flex;}
+  .blog-modal{
+    background:var(--paper); border-radius:var(--radius-lg); max-width:640px; width:100%;
+    max-height:88vh; overflow-y:auto; position:relative; box-shadow:var(--shadow);
+  }
+  .blog-modal-close{
+    position:absolute; top:14px; right:14px; width:36px; height:36px; border-radius:50%;
+    background:rgba(255,255,255,.9); border:1px solid var(--line); font-size:22px; line-height:1;
+    cursor:pointer; color:var(--ink); z-index:2;
+  }
+  .blog-modal-close:hover{background:var(--terracotta); color:#fff; border-color:transparent;}
+  .blog-modal-img{width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+  .blog-modal-img img{width:100%; height:100%; object-fit:cover; display:block;}
+  .blog-modal-body{padding:30px 34px 34px;}
+  .blog-modal-body h3{font-size:24px; line-height:1.3; margin:12px 0 8px;}
+  .blog-modal-body .meta{font-size:13px; color:var(--muted); margin-bottom:16px;}
+  .blog-modal-body p{color:var(--ink-soft); margin-bottom:24px; font-size:15.5px;}
 
   /* ---------- NEWSLETTER ---------- */
   .newsletter{background:var(--olive-dark); border-radius:var(--radius-lg); margin:0 40px 0; padding:40px 48px; display:flex; align-items:center; justify-content:space-between; gap:30px; max-width:1120px; margin:0 auto;}
@@ -309,7 +336,6 @@
       <a href="#about">About Me</a>
       <a href="#journey">My Journey</a>
       <a href="#blog">Blog</a>
-      <a href="#korean">Korean Corner ♥</a>
       <a href="#community">Community</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -357,8 +383,7 @@
     <div class="about-copy">
       <span class="eyebrow">🌿 About Me</span>
       <h2 style="margin-top:12px;">A people person with a passion for growth and <span class="accent">meaningful impact.</span></h2>
-      <p>I enjoy turning conversations into partnerships and ideas into real results. I'm most comfortable where relationships, strategy, and action come together — helping things move forward without overcomplicating them.</p>
-      <p>Having worked across different industries, I've learned to listen carefully, adapt quickly, and find the right rhythm in new spaces. I focus on connecting ideas to action and supporting initiatives that make a tangible difference. For me, growth comes from trust, thoughtful follow-through, and a little creative problem-solving — and that's the approach I try to bring to everything I do.</p>
+      <p>I work in the travel industry by day and spend my free time writing stories, exploring ideas, and building communities around shared interests. I believe the best conversations happen when people feel comfortable being themselves — and that's what I try to create wherever I go.</p>
       <div class="about-facts">
         <div class="fact">
           <span class="ic">📍</span>
@@ -427,28 +452,21 @@
 <section class="community" id="community">
   <div class="wrap community-grid">
     <div class="community-copy">
-      <span class="eyebrow">🌿 Community Vision</span>
+      <span class="eyebrow">🌿 K-Community</span>
       <h2>Growing <span class="accent">Together</span></h2>
-      <p>I'm building a community for young people to network, grow and take values forward — a space where ideas are shared, opportunities are discovered and everyone feels encouraged to become the best version of themselves.</p>
-      <div class="checklist">
-        <div class="item"><span class="dot">✓</span> Share ideas Openly</div>
-        <div class="item"><span class="dot">✓</span> Discover Opportunities</div>
-        <div class="item"><span class="dot">✓</span> Learn &amp; Grow Together</div>
-        <div class="item"><span class="dot">✓</span> Build Lasting Connections</div>
-        <div class="item"><span class="dot">✓</span> Accessible Mentorship</div>
-        <div class="item"><span class="dot">✓</span> Support &amp; Encouragement</div>
-      </div>
+      <p>A welcoming space for K-pop and Korean culture enthusiasts to share blogs, discover new perspectives, and connect with others who share the same passion.</p>
       <a href="#contact" class="btn btn-olive">Join the Community (Coming Soon) ♥</a>
     </div>
     <div class="values">
-      <h3>My Values</h3>
-      <div class="values-grid">
-        <div class="value-card"><div class="ic">🧭</div><div class="name">Authenticity</div><div class="desc">Building relationships based on trust.</div></div>
-        <div class="value-card"><div class="ic">🔍</div><div class="name">Curiosity</div><div class="desc">Always learning something new.</div></div>
-        <div class="value-card"><div class="ic">💛</div><div class="name">Kindness</div><div class="desc">Leading with empathy and respect.</div></div>
-        <div class="value-card"><div class="ic">🌿</div><div class="name">Growth</div><div class="desc">Helping ourselves and others improve.</div></div>
-        <div class="value-card"><div class="ic">🫂</div><div class="name">Community</div><div class="desc">Creating spaces where everyone belongs.</div></div>
-        <div class="value-card"><div class="ic">💡</div><div class="name">Creativity</div><div class="desc">Finding better ways to solve problems.</div></div>
+      <h3>Community Guidelines</h3>
+      <div class="checklist" style="grid-template-columns:1fr;">
+        <div class="item"><span class="dot">✓</span> Keep it friendly</div>
+        <div class="item"><span class="dot">✓</span> Be respectful</div>
+        <div class="item"><span class="dot">✓</span> No hate</div>
+        <div class="item"><span class="dot">✓</span> No bullying</div>
+        <div class="item"><span class="dot">✓</span> Support creators</div>
+        <div class="item"><span class="dot">✓</span> Respect different opinions</div>
+        <div class="item"><span class="dot">✓</span> Keep discussions welcoming</div>
       </div>
     </div>
   </div>
@@ -461,52 +479,27 @@
         <span class="eyebrow">🌿 Latest From The Blog</span>
         <h2 style="margin-top:8px;">Fresh off the page</h2>
       </div>
-      <a href="#blog" class="view-all">View all posts →</a>
+      <a href="https://medium.com/@anseladcoutho" target="_blank" rel="noopener" class="view-all">View all on Medium →</a>
     </div>
-    <div class="blog-grid">
-      <div class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(160deg,#E9C9AE,#D89A72);">
-          <span class="tag">RELATIONSHIPS</span>
-          <span class="glyph">🤍</span>
-        </div>
-        <h4>Why Meaningful Conversations Matter More Than Networking</h4>
-        <div class="meta">May 20, 2025 · 5 min read</div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(160deg,#CBD3BF,#8C9C79);">
-          <span class="tag">KOREAN DRAMAS</span>
-          <span class="glyph">🎬</span>
-        </div>
-        <h4>What Korean Dramas Have Taught Me About Life</h4>
-        <div class="meta">May 15, 2025 · 6 min read</div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(160deg,#EDE1C6,#D8C58F);">
-          <span class="tag">PERSONAL GROWTH</span>
-          <span class="glyph">✎</span>
-        </div>
-        <h4>Small Habits That Create Big Growth</h4>
-        <div class="meta">May 10, 2025 · 4 min read</div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(160deg,#E7B79A,#C9744C);">
-          <span class="tag">FOOD &amp; EXPERIENCES</span>
-          <span class="glyph">🍲</span>
-        </div>
-        <h4>Food That Brings People Together</h4>
-        <div class="meta">May 5, 2025 · 5 min read</div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(160deg,#BFCDB6,#6E8461);">
-          <span class="tag">THOUGHTS</span>
-          <span class="glyph">🏔</span>
-        </div>
-        <h4>Starting Something Before You're Ready</h4>
-        <div class="meta">Apr 30, 2025 · 4 min read</div>
-      </div>
+    <div class="blog-grid" id="blogGrid">
+      <!-- Cards are generated from blogPosts data below -->
     </div>
   </div>
 </section>
+
+<div class="blog-modal-overlay" id="blogModalOverlay">
+  <div class="blog-modal">
+    <button class="blog-modal-close" id="blogModalClose" aria-label="Close">&times;</button>
+    <div class="blog-modal-img" id="blogModalImg"></div>
+    <div class="blog-modal-body">
+      <span class="tag" id="blogModalTag"></span>
+      <h3 id="blogModalTitle"></h3>
+      <div class="meta" id="blogModalMeta"></div>
+      <p id="blogModalExcerpt"></p>
+      <a href="#" id="blogModalLink" target="_blank" rel="noopener" class="btn btn-olive">Read Full Story on Medium →</a>
+    </div>
+  </div>
+</div>
 
 <div class="newsletter">
   <div class="newsletter-copy">
@@ -572,5 +565,108 @@
   </div>
 </footer>
 
+<script>
+  var blogPosts = [
+    {
+      title: "The Naked Truth About Raising Boys",
+      subtitle: "If you have sons, this one's for you.",
+      tag: "PARENTING",
+      date: "Jul 12, 2026",
+      image: "https://miro.medium.com/v2/da:true/resize:fit:800/1*mujf34Sb2rQwBK3wx5xmMQ.gif",
+      url: "https://medium.com/@anseladcoutho/the-naked-truth-about-raising-boys-4733e190af93"
+    },
+    {
+      title: "The Great Anti-Ageing Circus",
+      subtitle: "Whatever happened to growing old gracefully? Once upon a time, ageing was a privilege.",
+      tag: "THOUGHTS",
+      date: "Jul 5, 2026",
+      image: "https://miro.medium.com/v2/resize:fit:800/1*Xa88-6unPF7I306W5NX5_Q.png",
+      url: "https://medium.com/@anseladcoutho/the-great-anti-ageing-circus-whatever-happened-to-growing-old-gracefully-b42a9cb87f11"
+    },
+    {
+      title: "What Thumper Once Taught Us",
+      subtitle: "The world has forgotten to think before we respond. Something about the internet feels off.",
+      tag: "THOUGHTS",
+      date: "Jun 26, 2026",
+      image: "https://miro.medium.com/v2/resize:fit:800/1*7jX7g9smOC7I0zjvXtnY9A.png",
+      url: "https://medium.com/@anseladcoutho/the-world-has-forgotten-what-thumper-once-taught-us-to-think-before-we-respond-73c2484edf17"
+    },
+    {
+      title: "Solo Travel? Girls' Trip? Family Escape?",
+      subtitle: "These destinations understood the assignment ✈️🌴",
+      tag: "TRAVEL",
+      date: "May 29, 2026",
+      image: "https://miro.medium.com/v2/resize:fit:800/1*YjKoohScfZ1oUS1hcqvwXQ.png",
+      url: "https://medium.com/@anseladcoutho/solo-travel-girls-trip-family-escape-these-destinations-understood-the-assignment-%EF%B8%8F-ee23559bcec8"
+    },
+    {
+      title: "The Fandom That Found Me",
+      subtitle: "The music, the memories, the people. Everyone said it was just a phase — here I am, almost a decade later.",
+      tag: "KOREAN CULTURE",
+      date: "May 23, 2026",
+      image: "https://miro.medium.com/v2/resize:fit:800/0*x_nlC1YqAxfl2Jdu.jpg",
+      url: "https://medium.com/@anseladcoutho/the-music-the-memories-the-people-the-fandom-that-found-me-9b99a0a44bfa"
+    },
+    {
+      title: "What Pursuit of Jade Taught Me",
+      subtitle: "What I, as a woman, took away from this drama about strength and womanhood.",
+      tag: "KOREAN DRAMAS",
+      date: "May 23, 2026",
+      image: "https://miro.medium.com/v2/resize:fit:800/0*-ly41iv0ruH_6JDu.jpg",
+      url: "https://medium.com/@anseladcoutho/what-i-as-a-women-took-away-from-the-drama-pursuit-of-jade-fc29dd1277d9"
+    },
+    {
+      title: "How Travel Agents Can Stay Visible",
+      subtitle: "In a scroll-happy world, let's be honest for a second about what it takes.",
+      tag: "TRAVEL",
+      date: "Apr 29, 2026",
+      image: "https://miro.medium.com/v2/resize:fit:800/1*Ibcwn7RLyqHBNZI5DdB34Q.png",
+      url: "https://medium.com/@anseladcoutho/how-travel-agents-can-stay-visible-in-a-scroll-happy-world-ff1c2796c1fb"
+    },
+    {
+      title: "The Things We Don't Hear",
+      subtitle: "But somehow understand. Communication as a parent isn't always about words.",
+      tag: "PERSONAL GROWTH",
+      date: "Apr 29, 2026",
+      image: "https://miro.medium.com/v2/resize:fit:800/1*0b68tgr5AGzIYV8c12hA-A.png",
+      url: "https://medium.com/@anseladcoutho/the-things-we-dont-hear-but-somehow-understand-b10fbf94c394"
+    }
+  ];
+
+  var blogGrid = document.getElementById('blogGrid');
+  blogPosts.forEach(function(post, i){
+    var card = document.createElement('div');
+    card.className = 'blog-card';
+    card.innerHTML =
+      '<div class="blog-thumb">' +
+        '<img src="' + post.image + '" alt="" loading="lazy">' +
+        '<span class="tag">' + post.tag + '</span>' +
+      '</div>' +
+      '<h4>' + post.title + '</h4>' +
+      '<div class="meta">' + post.date + '</div>';
+    card.addEventListener('click', function(){ openBlogModal(i); });
+    blogGrid.appendChild(card);
+  });
+
+  var overlay = document.getElementById('blogModalOverlay');
+  function openBlogModal(i){
+    var post = blogPosts[i];
+    document.getElementById('blogModalImg').innerHTML = '<img src="' + post.image + '" alt="">';
+    document.getElementById('blogModalTag').textContent = post.tag;
+    document.getElementById('blogModalTitle').textContent = post.title;
+    document.getElementById('blogModalMeta').textContent = post.date;
+    document.getElementById('blogModalExcerpt').textContent = post.subtitle;
+    document.getElementById('blogModalLink').href = post.url;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeBlogModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('blogModalClose').addEventListener('click', closeBlogModal);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeBlogModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBlogModal(); });
+</script>
 </body>
 </html>
